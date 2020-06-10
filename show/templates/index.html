@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{{  name  }}
+<h1> Hello world from template </h1>
+<h2> nihao </h2>
+{% for video in content %}
+    <iframe width="956" height="538" src="{{ video.urls }}"></iframe>
+{% endfor %}
+</body>
+</html>
