@@ -1,8 +1,11 @@
-from django.urls import path
 from django.urls import re_path
 from . import views
 
+# 456/
 urlpatterns = [
-    path("456/",views.world),
-    path("", views.hello)
+    re_path("123/", views.hello),
+    re_path("456/", views.world, name="main_page"),
+    re_path("comment/(?P<id>\d+)/", views.accept_comment, name='add_comment'),
+    re_path("one_video/(?P<id>\d+)/", views.one_video),
+    re_path("ajax/add_like/", views.ajax_like)
 ]
