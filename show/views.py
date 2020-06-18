@@ -1,6 +1,32 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import Video, Comment
+from show.serializer import CommentSerilazer, VideoSerializer
+from rest_framework.generics import (
+    CreateAPIView,
+    ListAPIView,
+    RetrieveUpdateAPIView)
+from rest_framework.permissions import IsAuthenticated
+from rest_framework.authentication import TokenAuthentication, SessionAuthentication
+
+class UpdateDestroyVideo(RetrieveUpdateAPIView):
+    serializer_class = VideoSerializer
+    queryset =  Video.objects.all()
+
+
+class VideoList(ListAPIView):
+    permission_classes = [IsAuthenticated]
+    authentication_classes = [TokenAuthentication, SessionAuthentication]
+    serializer_class = VideoSerializer
+    queryset = Video.objects.all()
+
+
+class CommentList(ListAPIView):
+    serializer_class = CommentSerilazer
+    queryset = Comment.objects.all()
+
+class CreatVideo(CreateAPIView):
+    serializer_class = VideoSerializer
 
 
 def hello(request):

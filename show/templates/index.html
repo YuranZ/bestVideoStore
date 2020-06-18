@@ -1,18 +1,18 @@
 {% extends "mainTemplate.html" %}
 {% load static %}
-{#{{ name }}#}
-{#{{ d }}#}
-{#{{ arr }}#}
-{#<br>#}
-{#{% for i in arr %}#}
-{#    {% if i == 2 %}#}
-{#        <i>{{ i|add:1 }}</i><br>#}
-{#    {% else %}#}
-{#        <h1>{{ i|add:10 }}</h1><br>#}
-{#    {% endif %}#}
-{#{% endfor %}#}
+    {#{{ name }}#}
+    {#{{ d }}#}
+    {#{{ arr }}#}
+    {#<br>#}
+    {#{% for i in arr %}#}
+    {#    {% if i == 2 %}#}
+    {#        <i>{{ i|add:1 }}</i><br>#}
+    {#    {% else %}#}
+    {#        <h1>{{ i|add:10 }}</h1><br>#}
+    {#    {% endif %}#}
+    {#{% endfor %}#}
 
-{#<h1>hello world from template!!@!!!!!!</h1>#}
+    {#<h1>hello world from template!!@!!!!!!</h1>#}
 {% block title %}all video{% endblock %}
 {% block links %}<script src="{% static "script.js" %}"></script>>{% endblock %}
 
@@ -28,11 +28,13 @@
     <h3>{{ video.date }}</h3>
     <h3 class="like" id="{{ video.id }}">Likes: {{ video.likes }}</h3>
     <h5>{{ video.description }}</h5>
+    <div id="comment {{ video.id }}">
     {% for com in video.comment.all %}
         <h5>{{ com.text }}</h5>
         <h6>{{ com.date }}</h6>
         <hr>
     {% endfor %}
+    </div>
 
 {% include "test.html" with some_id=video.id %}
 {#    <form action="/hello/comment/{{ video.id }}/" method="get">#}
