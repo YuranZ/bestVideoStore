@@ -28,7 +28,7 @@
     <h3>{{ video.date }}</h3>
     <h3 class="like" id="{{ video.id }}">Likes: {{ video.likes }}</h3>
     <h5>{{ video.description }}</h5>
-    <div id="comment {{ video.id }}">
+    <div id="comment{{ video.id }}">
     {% for com in video.comment.all %}
         <h5>{{ com.text }}</h5>
         <h6>{{ com.date }}</h6>

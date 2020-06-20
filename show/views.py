@@ -8,6 +8,7 @@ from rest_framework.generics import (
     RetrieveUpdateAPIView)
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.authentication import TokenAuthentication, SessionAuthentication
+from json import dumps
 
 class UpdateDestroyVideo(RetrieveUpdateAPIView):
     serializer_class = VideoSerializer
@@ -56,3 +57,11 @@ def ajax_like(request):
     video.save()
     print(request.GET["id"])
     return HttpResponse(video.likes)
+
+def ajax_comment(request):
+    id = request.GET["id"]
+    val = request.GET["val"]
+    com = Comment.objects.create(text=val, comment_video_id=id)
+    response = {"id":com.id, "date":str(com.date)}
+    response = dumps(response)
+    return HttpResponse(response)

@@ -11,5 +11,7 @@ urlpatterns = [
     re_path("api/v1/videolist", views.VideoList.as_view()),
     re_path("api/v1/commentlist", views.CommentList.as_view()),
     re_path("api/v1/videocreate", views.CreatVideo.as_view()),
-    re_path("api/v1/videoupdate/(?P<pk>\d+)/", views.UpdateDestroyVideo.as_view())
+    re_path("api/v1/videoupdate/(?P<pk>\d+)/", views.UpdateDestroyVideo.as_view()),
+    re_path("add_ajax_comment/", views.ajax_comment),
+
 ]
